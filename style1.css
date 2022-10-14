@@ -1,0 +1,41 @@
+.containerlogin{
+    background-image: url(images/Happy\ cat\ and\ dog.jpg);
+    background-size: 1500px;
+    background-repeat: no-repeat;
+}
+.containerregister{
+    background-image: url(images/dog\ with\ flower.jpg);
+    background-size: 500px ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: top;
+}
+
+h1{
+    text-align: center;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, #f32170,#adbb17, #185281, #0f0e0e);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;                  
+}
+
+sub{
+    font: size 30px;
+    font-family:Copperplate, Papyrus, fantasy; 
+}
+
+
+    
+
+.flexcontainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+}
+.image img {
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+  }
