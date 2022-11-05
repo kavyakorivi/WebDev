@@ -10,20 +10,23 @@
 </head>
 <body  class="containerlogin">
 <h1>Welcome to Happy Tails<sub>Adopt Don't Shop</sub></h1>
-     <form style="font-size:20px;"> 
+     <form id = "login-page" style="font-size:20px;"> 
      <br>
-      <p style="color:rgb(14, 12, 12);font-size: 30px;">Enter Your Details and login </p>
-      <label for="username"><b>Username</b></label>&emsp;&emsp;&emsp;&emsp;&nbsp;
-      <input type="text" placeholder="Enter Username" name="username" id="username" required>
+      <p style="color:rgb(14, 12, 12);font-size: 25px;">Enter Your Details and login </p>
+      <label for="userid"><b>User ID</b></label>&emsp;&emsp;&emsp;&emsp;&nbsp;
+      <input type="text" placeholder="Enter Userid" name="userid" id="userid" required>
       <br>
-      <label for="psw"><b>Password</b></label>&emsp;&emsp;&emsp;&emsp;&ensp;
+      <label for="psw"><b>Password</b></label>&emsp;&emsp;&emsp;&ensp;
       <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
       
       <br>
-      <button type="submit" class="loginbtn"><a href="happytailswebpage.html" TARGET="_blank">Login</a></button>
 
+      <button type="submit" value="submit" id= "submit" class="registerbtn">submit</a></button>
+      
+      <p><a href="happytailswebpage.html" TARGET="_blank"> login</a></p>
       <p> Don't have an account? <a href="register.html" TARGET="_blank"> Register here</a></p>
       
     </form>
+    <script src="main.js"></script>
 </body>
 </html>

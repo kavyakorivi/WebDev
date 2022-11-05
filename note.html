@@ -10,22 +10,23 @@
 <body>    
   <h2> Want to Write something to us?</h2>
       
-      
-      <label for="Add a note"><b>Note :</b></label>
-     
+    <form id="note-form">
+      <label for="Add a note"><b style="font-size:40px";>Note :</b></label>
       <br>
-      <textarea name="paragraph_text" cols="100" rows="5"></textarea>
-
+      <textarea name="paragraph_text" id="text-area" cols="100" rows="10"></textarea>
       <br>
+  
+      <button type="submit" value="submit" id= "submit" class="notebtn">submit</button>
       
-      <button type="submit" class="Submitbtn"><a href="thankyou.html" TARGET="_blank">Submit</a></button>
+      <p><a href="thankyou.html" TARGET="_blank"> Continue</a></p>
+    </form>
 
 
       <p> Back to choosing pets ? <a href="happytailswebpage.html" TARGET="_blank"> HOME </a></p>
       <p> New User? <a href="register.html" TARGET="_blank"> Register here</a></p>
       <p> want to exit ? <a href="login.html" TARGET="_blank"> Logout </a></p>
     
-    
+      <script src="main.js"></script>
       
 </body>
 </html>
