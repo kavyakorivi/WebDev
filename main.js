@@ -13,6 +13,8 @@ function displayRegister(e){
     console.log(`Email = ${email}`);
     console.log(`User Id = ${userid}`);
     console.log(`Password = ${password}`);
+    
+    
 }
 
 const login = document.getElementById("login-page");
@@ -24,6 +26,7 @@ function displayLogin(e){
     let password = document.getElementById("psw").value;
     console.log(`User Id = ${userid}`);
     console.log(`Password = ${password}`);
+    
 }
 
 
@@ -34,4 +37,70 @@ function displayNote(e){
     e.preventDefault();
     let notes = document.getElementById("text-area").value;
     console.log(`Note = ${notes}`);
+    
 }
+
+
+class User{
+    constructor (firstname, lastname, email, userid, psw) {
+    this.UserFisrtname = firstname;
+    this.UserLastname = lastname;
+    this.UserEmail = email;
+    this.UserId = userid;
+    this.UserPassword = psw;
+    }
+    
+    getUserFirstname() {
+     return this.UserFirstname;
+    }
+    getUserLastname() {
+     return this.UserLastname;
+    }
+    getUserEmail() {
+     return this.UserEmail;
+    }
+    getUserId() {
+     return this.UserId;
+    }
+    getUserPasssword() {
+     return this.UserPassword;
+    }
+
+    setUserFirstname(firstname) {
+    this.userFirstname = firstname;
+    }
+    setUserLastname(lastname) {
+    this.userLastname = lastname;
+    }
+    setUserEmail(email) {
+    this.userEmail= email;
+    }
+    setUserId(userid) {
+    this.UserId = userid;
+    }
+    setUserPassword(psw) {
+    this.userPassword = psw;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

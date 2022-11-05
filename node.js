@@ -13,11 +13,3 @@ for(let i=0;i<numbers.length;i++)
 console.log(numbers)
 
 
-let form = document.getElementById("noteForm");
-form.addEventListener('submit',addNote);
-
-function addNote(e){
-    e.preventDefault();
-}
-
-<button type="submit" id="submit" class="loginbtn"><a href="happytailswebpage.html" TARGET="_blank">Login</a></button>
