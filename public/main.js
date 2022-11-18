@@ -35,7 +35,7 @@ if(form)form.addEventListener('submit',displayNote);
 
 function displayNote(e){
     e.preventDefault();
-    let notes = document.getElementById("text-area").value;
+    let notes = document.getElementById("notecontent").value;
     console.log(`Note = ${notes}`);
     
 }
@@ -83,6 +83,83 @@ class User{
     }
     
 }
+
+
+class Note{
+    constructor ( userid, noteid, petid, notecontent  ) {
+    this.NoteUserId = userid;
+    this.NoteNoteId = noteid;
+    this.NotePetId = petid;
+    this.NoteNoteContent = notecontent;
+    }
+    getNoteUserId() {
+        return this.NoteUserId;
+    }
+    getNoteNoteId() {
+        return this.NoteNodeId;
+    }
+    getNotePetId() {
+        return this.NotePetId;
+    }
+    getNoteNoteContent() {
+        return this.NoteNoteContent;
+    }
+    setNoteUserId(userid) {
+        this.NoteUserId = userid;
+    }
+    setNoteNoteId(noteid) {
+        this.NoteNodeId = noteid;
+    }
+    setNotePetId(petid) {
+        this.NotePetId = petid;
+    }
+    setNoteNoteContent(notecontent) {
+        this.NoteNoteContent = notecontent;
+    }
+}
+
+
+const usersBtn =document.getElementById("users-btn");
+usersBtn.addEventListener('click',getUsers);
+
+function getUsers(){
+    fetch("http://localhost:3000/users")
+    .then((res) => res.json())
+    .then((data) => {
+        let ul = document.getElementById("allUsers");
+        data.forEach((user) => {
+            let li = document.createElement('li');
+            let text = document.createTextNode(user.userid);
+            li.appendChild(text);
+            users-btn.appendChild(li);
+
+        })
+        
+    })
+    .catch((err) => console.log(`Error! ${err}`));
+        
+}
+
+const notesBtn =document.getElementById("notes-btn");
+notesBtn.addEventListener('click',getNotes);
+
+function getNotes(){
+    fetch("http://localhost:3000/notes")
+    .then((res) => res.json())
+    .then((data) => {
+        let ul = document.getElementById('allNotes');
+        data.forEach((note) => {
+            let li = document.createElement('li');
+            let text = document.createTextNode(user.notecontent);
+            li.appendChild(text);
+
+        })
+        
+    })
+    .catch((err) => console.log(`Error! ${err}`));
+        
+}
+
 
 
 
