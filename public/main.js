@@ -126,39 +126,44 @@ function getUsers(){
     fetch("http://localhost:3000/users")
     .then((res) => res.json())
     .then((data) => {
-        let ul = document.getElementById("allUsers");
+        let ul=document.getElementById("allUsers");
         data.forEach((user) => {
             let li = document.createElement('li');
             let text = document.createTextNode(user.userid);
             li.appendChild(text);
-            users-btn.appendChild(li);
-
+            ul.appendChild(li);
         })
-        
+        console.log(data);
+
     })
-    .catch((err) => console.log(`Error! ${err}`));
-        
+    .catch((err) => { console.log(`Error! ${err.message}`)
+})
+           
 }
 
 const notesBtn =document.getElementById("notes-btn");
 notesBtn.addEventListener('click',getNotes);
 
-function getNotes(){
+function getUsers(){
     fetch("http://localhost:3000/notes")
     .then((res) => res.json())
     .then((data) => {
-        let ul = document.getElementById('allNotes');
+        let ul=document.getElementById("allNotes");
         data.forEach((note) => {
             let li = document.createElement('li');
-            let text = document.createTextNode(user.notecontent);
+            let text = document.createTextNode(note.notecontent);
             li.appendChild(text);
-
+            ul.appendChild(li);
         })
-        
+        console.log(data);
+
     })
-    .catch((err) => console.log(`Error! ${err}`));
-        
+    .catch((err) => { console.log(`Error! ${err.message}`)
+})
+           
 }
+
+
 
 
 

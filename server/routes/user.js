@@ -9,7 +9,7 @@ router.get('/', (req,res) => {
     } catch(err) {
         res.status(401).send({message:error.message});
     }
-});
+})
 
 
 module.exports = router;
