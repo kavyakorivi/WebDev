@@ -1,12 +1,12 @@
 const express = require('express');
-const user = require('../models/note');
+const pet = require('../models/pet');
 const router = express.Router();
 
 router
   .get('/', async (req, res) => {
     try {
-      const notes = await user.getAllnotes();
-      res.send(notes);
+      const pets = await pet.getAllpets();
+      res.send(pets);
     } catch(err) {
       res.status(401).send({message: err.message});
     }
@@ -14,8 +14,8 @@ router
 
   .post('/login', async (req, res) => {
     try {
-      let note = await note.login(req.body);
-      res.send({...note, password: undefined})
+      let pet = await pet.login(req.body);
+      res.send({...pet, password: undefined})
     } catch(err) {
       res.status(401).send({message: err.message});
     }

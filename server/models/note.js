@@ -22,6 +22,17 @@ const notes = [
     ];
     
     
-    let getNotes = () => notes;
+    function getAllnotes(){
+        return notes.map(note=>note.notecontent);
+    }
     
-    module.exports = { getNotes };
+    function login(note) { 
+        let cNote = notes.filter( n => n.notecontent === note.notecontent);
+        
+        if(!cNote[0]) throw Error("note not found");
+        if(cNote[0].password !== user.password) throw Error("Password incorrect");
+      
+        return cNote[0];
+      }
+    
+    module.exports = { getAllnotes,login} ;

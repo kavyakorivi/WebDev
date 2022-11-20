@@ -118,6 +118,38 @@ class Note{
     }
 }
 
+class Pet{
+    constructor ( userid, petid, pettype, petage ) {
+    this.PetUserId = userid;
+    this.PetPetId = petid;
+    this.PetPettype= pettype;
+    this.PetPetage = petage;
+    }
+    getPetUserId () {
+        return this.PetUserId ;
+    }
+    getPetPetId () {
+        return this.PetPetId ;
+    }
+    getPetPettype() {
+        return this.PetPettype;
+    }
+    getPetPetage() {
+        return this.PetPetage;
+    }
+    setPetUserId(userid) {
+        this.PetUserId = userid;
+    }
+    setPetPetId(petid) {
+        this.PetPetId = petid;
+    }
+    setPetPettype(pettype) {
+        this.PetPettype = pettype;
+    }
+    setPetPetage(petage) {
+        this.PetPetage = petage;
+    }
+}
 
 const usersBtn =document.getElementById("users-btn");
 usersBtn.addEventListener('click',getUsers);
@@ -125,64 +157,35 @@ usersBtn.addEventListener('click',getUsers);
 function getUsers(){
     fetch("http://localhost:3000/users")
     .then((res) => res.json())
-    .then((data) => {
-        let ul=document.getElementById("allUsers");
-        data.forEach((user) => {
-            let li = document.createElement('li');
-            let text = document.createTextNode(user.userid);
-            li.appendChild(text);
-            ul.appendChild(li);
-        })
-        console.log(data);
-
-    })
-    .catch((err) => { console.log(`Error! ${err.message}`)
-})
-           
+    .then((data1) => 
+                console.log(data1))
+    .catch((err) => 
+                console.log(err))
 }
+
 
 const notesBtn =document.getElementById("notes-btn");
 notesBtn.addEventListener('click',getNotes);
 
-function getUsers(){
-    fetch("http://localhost:3000/notes")
+function getNotes(){
+    fetch("http://localhost:3000/users")
     .then((res) => res.json())
-    .then((data) => {
-        let ul=document.getElementById("allNotes");
-        data.forEach((note) => {
-            let li = document.createElement('li');
-            let text = document.createTextNode(note.notecontent);
-            li.appendChild(text);
-            ul.appendChild(li);
-        })
-        console.log(data);
-
-    })
-    .catch((err) => { console.log(`Error! ${err.message}`)
-})
-           
+    .then((data2) => 
+                console.log(data2))
+    .catch((err) => 
+                console.log(err))
 }
+/*
 
+const petsBtn =document.getElementById("pets-btn");
+petsBtn.addEventListener('click',getPets);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function getPets(){
+    fetch("http://localhost:3000/users")
+    .then((res) => res.json())
+    .then((data3) => 
+                console.log(data3))
+    .catch((err) => 
+                console.log(err))
+}
+*/

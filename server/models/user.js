@@ -23,6 +23,17 @@ const users = [
 ];
 
 
-let getUsers = () => users;
+function getAllusers(){
+    return users.map(user=>user.userid);
+}
 
-module.exports = { getUsers };
+function login(user) { 
+    let cUser = users.filter( u => u.userid === user.userid);
+    
+    if(!cUser[0]) throw Error("Username not found");
+    if(cUser[0].psw !== user.psw) throw Error("Password incorrect");
+  
+    return cUser[0];
+  }
+
+module.exports = { getAllusers,login} ;
