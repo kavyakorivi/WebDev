@@ -152,7 +152,7 @@ class Pet{
 }
 
 const usersBtn =document.getElementById("users-btn");
-usersBtn.addEventListener('click',getUsers);
+if(usersBtn) usersBtn.addEventListener('click',getUsers);
 
 function getUsers(){
     fetch("http://localhost:3000/users")
@@ -165,27 +165,55 @@ function getUsers(){
 
 
 const notesBtn =document.getElementById("notes-btn");
-notesBtn.addEventListener('click',getNotes);
+if(notesBtn) notesBtn.addEventListener('click',getNotes);
 
 function getNotes(){
-    fetch("http://localhost:3000/users")
+    fetch("http://localhost:3000/notes")
     .then((res) => res.json())
     .then((data2) => 
                 console.log(data2))
     .catch((err) => 
                 console.log(err))
 }
-/*
+
 
 const petsBtn =document.getElementById("pets-btn");
-petsBtn.addEventListener('click',getPets);
+if(petsBtn) petsBtn.addEventListener('click',getPets);
 
 function getPets(){
-    fetch("http://localhost:3000/users")
+    fetch("http://localhost:3000/pets")
     .then((res) => res.json())
     .then((data3) => 
                 console.log(data3))
     .catch((err) => 
                 console.log(err))
 }
-*/
+
+
+  
+const callback = (entries, observer) => {
+    entries.forEach((entry) => {
+        let element = document.querySelector('.header-main');
+        entry.isIntersecting ? element.classList.remove('header-small') : element.classList.add('header-small');
+    })
+};
+  
+const observer = new IntersectionObserver(callback, {
+    root: document.querySelector('[data-scroll-root]'),
+    rootMargin: '0px',
+    threshold: 1.0
+});
+observer.observe(document.getElementById('header-d'));
+
+
+
+
+
+
+
+
+
+
+
+
+

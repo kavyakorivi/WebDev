@@ -1,16 +1,19 @@
 const pets = [
     {
-        petid: "123",
+        petid: "pet123",
+        userid:"rapunzel1",
         pettype: "dog",
         petage: "3 years",
     },
     {
-        petid: "456",
+        petid: "pet456",
+        userid:"ariel2",
         pettype: "dog",
         petage: "3 months",
     },
     {
-        petid: "789",
+        petid: "pet789",
+        userid:"cindrella3",
         pettype: "dog",
         petage: "4 years",      
     },
