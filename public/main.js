@@ -6,12 +6,12 @@ function displayRegister(e){
     let firstname = document.getElementById("firstname").value;
     let lastname = document.getElementById("lastname").value;
     let email = document.getElementById("email").value;
-    let userid = document.getElementById("userid").value;
+    let username = document.getElementById("username").value;
     let password = document.getElementById("psw").value;
     console.log(`Firstname = ${firstname}`);
     console.log(`Lastname= ${lastname}`);
     console.log(`Email = ${email}`);
-    console.log(`User Id = ${userid}`);
+    console.log(`User Name = ${username}`);
     console.log(`Password = ${password}`);
     
     
@@ -22,9 +22,9 @@ if(login)login.addEventListener('submit',displayLogin);
 
 function displayLogin(e){
     e.preventDefault();
-    let userid = document.getElementById("userid").value;
+    let username = document.getElementById("username").value;
     let password = document.getElementById("psw").value;
-    console.log(`User Id = ${userid}`);
+    console.log(`User Name = ${username}`);
     console.log(`Password = ${password}`);
     
 }
@@ -42,14 +42,18 @@ function displayNote(e){
 
 
 class User{
-    constructor (firstname, lastname, email, userid, psw) {
+    constructor (userid,firstname, lastname, email, username, psw) {
+    this.UserUserId = userid;
     this.UserFisrtname = firstname;
     this.UserLastname = lastname;
     this.UserEmail = email;
-    this.UserId = userid;
+    this.UserUserName = username;
     this.UserPassword = psw;
     }
-    
+
+    getUserUserId() {
+        return this.UserUserId;
+    }
     getUserFirstname() {
      return this.UserFirstname;
     }
@@ -59,13 +63,16 @@ class User{
     getUserEmail() {
      return this.UserEmail;
     }
-    getUserId() {
-     return this.UserId;
+    getUserUserName() {
+     return this.UserUserName;
     }
     getUserPasssword() {
      return this.UserPassword;
     }
-
+    
+    setUserUserId(userid) {
+        this.UserUserId = userid;
+    }
     setUserFirstname(firstname) {
     this.userFirstname = firstname;
     }
@@ -75,8 +82,8 @@ class User{
     setUserEmail(email) {
     this.userEmail= email;
     }
-    setUserId(userid) {
-    this.UserId = userid;
+    setUserUserName(username) {
+    this.UserUserName = username;
     }
     setUserPassword(psw) {
     this.userPassword = psw;
