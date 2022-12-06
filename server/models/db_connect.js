@@ -6,27 +6,16 @@ const con = mysql.createPool({
   user: process.env.MYSQL_USERNAME,
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DB
-});
+})
 
 const query = (sql, binding) => {
   return new Promise((resolve, reject) => {
     con.query(sql, binding, (err, result, fields)=> {
       if(err) reject(err);
       resolve(result);
-    });
-  });
-};
-
-module.exports = {con, query};
-
-con.connect(function(err) {
-    if(err) throw err;
-    console.log("connected!");
-    con.query("CREATE DATABASE IF NOT EXISTS happytails.db", function (err, result){
-        if(err) throw err;
-        console.log("Database created");
     })
-});
+  })
+}
 
 
 module.exports = {con, query};

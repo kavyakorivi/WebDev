@@ -1,4 +1,6 @@
-const register = document.getElementById("register-page");
+//const e = require("express");
+
+/*const register = document.getElementById("register-page");
 if(register)register.addEventListener('submit',displayRegister);
 
 function displayRegister(e){
@@ -40,123 +42,174 @@ function displayNote(e){
     
 }
 
+*/
 
+async function fetchData(route = '', data = {}, methodType) {
+    const response = await fetch(`http://localhost:3000${route}`, {
+      method: methodType, // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify(data) // body data type must match "Content-Type" header
+    });
+    if(response.ok) {
+      return await response.json(); // parses JSON response into native JavaScript objects
+    } else {
+      throw await response.json();
+    }
+  }
 class User{
-    constructor (userid,firstname, lastname, email, username, psw) {
-    this.UserUserId = userid;
-    this.UserFisrtname = firstname;
-    this.UserLastname = lastname;
-    this.UserEmail = email;
-    this.UserUserName = username;
-    this.UserPassword = psw;
+    constructor (firstname, lastname, email, username, psw) {
+    this.userid = userid;
+    this.fisrtname = firstname;
+    this.lastname = lastname;
+    this.email = email;
+    this.username = username;
+    this.psw = psw;
     }
 
-    getUserUserId() {
-        return this.UserUserId;
+    getfirstname() {
+     return this.firstname;
     }
-    getUserFirstname() {
-     return this.UserFirstname;
+    getlastname() {
+     return this.lastname;
     }
-    getUserLastname() {
-     return this.UserLastname;
+    getemail() {
+     return this.email;
     }
-    getUserEmail() {
-     return this.UserEmail;
+    getusername() {
+     return this.username;
     }
-    getUserUserName() {
-     return this.UserUserName;
-    }
-    getUserPasssword() {
-     return this.UserPassword;
+    getpsw() {
+     return this.psw;
     }
     
-    setUserUserId(userid) {
-        this.UserUserId = userid;
+    
+    setfirstname(firstname) {
+    this.firstname = firstname;
     }
-    setUserFirstname(firstname) {
-    this.userFirstname = firstname;
+    setlastname(lastname) {
+    this.lastname = lastname;
     }
-    setUserLastname(lastname) {
-    this.userLastname = lastname;
+    setemail(email) {
+    this.email= email;
     }
-    setUserEmail(email) {
-    this.userEmail= email;
+    setusername(username) {
+    this.username = username;
     }
-    setUserUserName(username) {
-    this.UserUserName = username;
-    }
-    setUserPassword(psw) {
-    this.userPassword = psw;
+    setpsw(psw) {
+    this.psw = psw;
     }
     
+    
+}
+let loginForm = document.getElementById("login-page");
+if(loginForm) loginForm.addEventListener('submit', login);
+
+function login(e) {
+  e.preventDefault();
+
+  let username = document.getElementById("username").value;
+  let psw = document.getElementById("psw").value;
+  let user = new user(username, psw);
+
+  fetchData("/users/login", user, "POST")
+  .then((data) => {
+    setCurrentUser(data);
+    window.location.href = "happytailswebpage.html";
+  })
+  .catch((err) => {
+    console.log(`Error!!! ${err.message}`)
+  }) 
 }
 
 
 class Note{
-    constructor ( userid, noteid, petid, notecontent  ) {
-    this.NoteUserId = userid;
-    this.NoteNoteId = noteid;
-    this.NotePetId = petid;
-    this.NoteNoteContent = notecontent;
+    constructor ( userid, noteid, notecontent  ) {
+    this.userid = userid;
+    this.noteid = noteid;
+    this.notecontent = notecontent;
     }
-    getNoteUserId() {
-        return this.NoteUserId;
+    getuserid() {
+        return this.userid;
     }
-    getNoteNoteId() {
-        return this.NoteNodeId;
+    getnoteid() {
+        return this.noteid;
     }
-    getNotePetId() {
-        return this.NotePetId;
+    getnotecontent() {
+        return this.notecontent;
     }
-    getNoteNoteContent() {
-        return this.NoteNoteContent;
+    setuserid(userid) {
+        this.userid = userid;
     }
-    setNoteUserId(userid) {
-        this.NoteUserId = userid;
+    setnoteid(noteid) {
+        this.noteid = noteid;
     }
-    setNoteNoteId(noteid) {
-        this.NoteNodeId = noteid;
+    setnotecontent(notecontent) {
+        this.notecontent = notecontent;
     }
-    setNotePetId(petid) {
-        this.NotePetId = petid;
-    }
-    setNoteNoteContent(notecontent) {
-        this.NoteNoteContent = notecontent;
-    }
+}
+let noteForm = document.getElementById("note-form");
+if(noteForm) noteForm.addEventListener('submit', note);
+
+function note(e) {
+  e.preventDefault();
+
+  let notecontent = document.getElementById("notecontent").value;
+   let note = new note(notecontent);
+
+  fetchData("/notes/note", note, "POST")
+  .then((data) => {
+    setCurrentUser(data);
+    window.location.href = "thankyou.html";
+  })
+  .catch((err) => {
+    console.log(`Error!!! ${err.message}`)
+  }) 
 }
 
+
+/*
 class Pet{
     constructor ( userid, petid, pettype, petage ) {
-    this.PetUserId = userid;
-    this.PetPetId = petid;
-    this.PetPettype= pettype;
-    this.PetPetage = petage;
+    this.userid = userid;
+    this.petid = petid;
+    this.pettype= pettype;
+    this.petage = petage;
     }
-    getPetUserId () {
-        return this.PetUserId ;
+    getuserid () {
+        return this.userid ;
     }
-    getPetPetId () {
-        return this.PetPetId ;
+    getpetid () {
+        return this.petid ;
     }
-    getPetPettype() {
-        return this.PetPettype;
+    getpettype() {
+        return this.pettype;
     }
-    getPetPetage() {
-        return this.PetPetage;
+    getpetage() {
+        return this.petage;
     }
-    setPetUserId(userid) {
-        this.PetUserId = userid;
+    setuserid(userid) {
+        this.userid = userid;
     }
-    setPetPetId(petid) {
-        this.PetPetId = petid;
+    setpetid(petid) {
+        this.petid = petid;
     }
-    setPetPettype(pettype) {
-        this.PetPettype = pettype;
+    setpettype(pettype) {
+        this.pettype = pettype;
     }
-    setPetPetage(petage) {
-        this.PetPetage = petage;
+    setpetage(petage) {
+        this.petage = petage;
     }
 }
+*/
+
+
 
 const usersBtn =document.getElementById("users-btn");
 if(usersBtn) usersBtn.addEventListener('click',getUsers);
@@ -182,7 +235,7 @@ function getNotes(){
     .catch((err) => 
                 console.log(err))
 }
-
+/*
 
 const petsBtn =document.getElementById("pets-btn");
 if(petsBtn) petsBtn.addEventListener('click',getPets);
@@ -196,8 +249,8 @@ function getPets(){
                 console.log(err))
 }
 
-
-  
+*/
+/*
 const callback = (entries, observer) => {
     entries.forEach((entry) => {
         let element = document.querySelector('.header-main');
@@ -212,15 +265,32 @@ const observer = new IntersectionObserver(callback, {
 });
 observer.observe(document.getElementById('header-d'));
 
+//
+let regForm = document.getElementsById("register-page");
+if(regForm) regForm.addEventListener('submit',register);
+
+function register(e){
+e.preventDefault();
+
+let username = document.getElementsById("username").value;
+let psw = document.getElementsById("psw").value;
+let firstname = document.getElementsById("firstname").value;
+let lastname = document.getElementsById("lastname").value;
+let email = document.getElementsById("email").value;
+
+let user = new User(username,psw,firstname,lastname,email)
+
+fetchData("/users/register",user,"POST")
+.then((data)=> {
+    console.log(data);
+})
+.catch((err) => {
+    console.log(err);
+})
+}
 
 
-
-
-
-
-
-
-
+*/
 
 
 

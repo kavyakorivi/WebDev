@@ -15,7 +15,7 @@ router
   .post('/login', async (req, res) => {
     try {
       let user = await user.login(req.body);
-      res.send({...user, password: undefined})
+      res.send({...user, psw: undefined})
     } catch(err) {
       res.status(401).send({message: err.message});
     }
@@ -24,12 +24,32 @@ router
   .post('/register', async (req, res) => {
     try {
       let user = await user.register(req.body);
-      res.send({...user, password: undefined})
+      res.send({...user, psw: undefined})
     } catch(err) {
       res.status(401).send({message: err.message});
     }
   })
 
+  .put('/edit', async (req, res) => {
+    try {
+      let user = await user.editUser(req.body);
+      res.send({...user, psw: undefined});
+    } catch(err) {
+      res.status(401).send({message: err.message})
+    }
+  })
+
+  .delete('/delete', async (req, res) => {
+    try {
+      User.deleteUser(req.body);
+      res.send({success: "We'll Miss You... :("})
+    } catch(err) {
+      res.status(401).send({message: err.message})
+    }
+  })
+
   
-module.exports = router;
+
+
+  module.exports = router;
 
