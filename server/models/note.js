@@ -1,30 +1,3 @@
-/*const notes = [
-    {
-        userid: "1",
-        noteid: "11111",
-        petid: "olivia1",
-        notecontent: "I want to know more about this pet"
-    },
-    {
-        userid: "2",
-        noteid: "22222",
-        petid: "sophia2",
-        notecontent: "Is this a trained pet ?"
-        
-    },
-    {
-        userid: "3",
-        noteid: "33333",
-        petid: "emma3",
-        notecontent: "let me know if this is available"
-        
-    },
-    ];
-*/
-    
-    
-    
-
 const con = require("./db_connect");
 
 // Table Creation 
@@ -60,8 +33,8 @@ async function note(note) {
 }
 
 // Read Note -- notecontent reading
-async function note(note) { // {userName: "sda", password: "gsdhjsga"}
-  let cNote = await getUser(note); //[{userName: "cathy123", password: "icecream"}]
+async function note(note) { 
+  let cNote = await getNote(note); 
   
   if(!cNote[0]) throw Error("note not found");
   

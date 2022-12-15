@@ -1,32 +1,3 @@
-/*
-const users = [
-{
-   userid: "1",
- firstname: "rapunzel",
-   lastname: "one",
-    email: "one@gmail.com",
-    username:"rapunzel1",
-    psw: "psw11"
-},
-{
-   userid: "2",
-    firstname: "ariel",
-   lastname: "two",
-  email: "two@gmail.com",
-    username: "ariel2",
-    psw: "psw22"
-},
-{
-    userid: "3",
-    firstname: "cinderella",
-    lastname: "three",
-    email: "three@gmail.com",
-    username: "cinderella3",
-    psw: "psw33"
-},
-];
-*/
-
 const con = require("./db_connect");
 
 // Table Creation 
