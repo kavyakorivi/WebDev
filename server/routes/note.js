@@ -12,10 +12,11 @@ router
     }
   })
 
-  .post('/note', async (req, res) => {
+  .post('/getnote', async (req, res) => {
     try {
-      let note = await note.note(req.body);
-      res.send({...note, psw: undefined})
+      console.log(req.body)
+      let note = await Note.getNote(req.body);
+      res.send(note);
     } catch(err) {
       res.status(401).send({message: err.message});
     }
@@ -25,8 +26,8 @@ router
 
   .put('/edit', async (req, res) => {
     try {
-      let note = await note.editNote(req.body);
-      res.send({...note, psw: undefined});
+      let note = await Note.editNote(req.body);
+      res.send(note);
     } catch(err) {
       res.status(401).send({message: err.message})
     }
@@ -40,7 +41,24 @@ router
       res.status(401).send({message: err.message})
     }
   })
-
+  
+  .post('/create', async (req, res) => {
+    try {
+      console.log(req.body)
+      let note = await Note.create(req.body);
+      res.send(note);
+    } catch(err) {
+      res.status(401).send({message: err.message});
+    }
+  })
+  .post('/read', async (req, res) => {
+    try {
+      let note = await Note.read(req.body);
+      res.send(note);
+    } catch(err) {
+      res.status(401).send({message: err.message});
+    }
+  })
   
 
 

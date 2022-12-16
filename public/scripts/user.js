@@ -2,8 +2,10 @@ import { fetchData, setCurrentUser } from './main.js'
 
 // user class
 class User {
-  constructor(username, psw, email) {
+  constructor(username, firstname,lastname, psw, email) {
     this.username = username;
+    this.firstname = firstname;
+    this.lastname=lastname;
     this.psw = psw;
     this.email = email;
   }
@@ -31,8 +33,7 @@ function login(e) {
     window.location.href = "note.html";
   })
   .catch((err) => {
-   let p = document.querySelector('.error');
-   p.innerHTML - err.message;
+    console.log(`Error!!! ${err.message}`)
   }) 
 }
  
@@ -53,11 +54,11 @@ function register(e) {
   fetchData("/users/register", user, "POST")
   .then((data) => {
     setCurrentUser(data);
+    alert("successfully registered")
     window.location.href = "login.html";
   })
   .catch((err) =>{
-    let p = document.querySelector('.error');
-    p.innerHTML = err.message;
+    console.log(err);
   })
 }
 

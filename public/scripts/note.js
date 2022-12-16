@@ -1,3 +1,4 @@
+import { fetchData, setCurrentUser } from './main.js'
 
 // note class
 class Note {
@@ -5,7 +6,7 @@ class Note {
     this.notecontent= notecontent;
   }
 
-  getnotecontent() {
+  getNotes() {
     return this.notecontent;
   }
 }
@@ -13,7 +14,7 @@ class Note {
 
 
 
-
+let user=getCurrentUser();
 let noteForm = document.getElementById("note-form");
 if(noteForm) noteForm.addEventListener('submit', note);
 
@@ -21,15 +22,34 @@ function note(e) {
   e.preventDefault();
 
   let notecontent = document.getElementById("notecontent").value;
-   let note = new note(notecontent);
+   let note = new Note(notecontent);
+   note.userid = user.userid;
 
-  fetchData("/notes/note", note, "POST")
+  fetchData("/notes/create", note, "POST")
   .then((data) => {
-    setCurrentUser(data);
-    window.location.href = "thankyou.html";
+    //setCurrentUser(data);
+    alert("success!! note added.")
+    window.location.href = "note.html";
   })
   .catch((err) => {
-    let p = document.querySelector('.error');
-    p.innerHTML = err.message;
+    console.log(err);
   }) 
+  document.getElementById("note-form").reset();
+}
+
+
+
+
+if(user&&note) 
+    getsnotes();
+
+function getsnotes(){
+    let notes =document.getElementById('notecontent');
+    fetchData("/notes/getNote",user,"POST")
+    .then((data)=>{
+     console.log(data);
+    for(let i=0;i<data.length;i++){
+      notes.value+=data[i].notecontent;
+    }
+})
 }
