@@ -45,8 +45,6 @@ WHERE users.userid=notes.userid;
   return cNote[0];
 }
 
-
-
 // Update Note function
 async function editNote(note) {
   let sql = `UPDATE notes 
@@ -84,8 +82,6 @@ async function getNote(note) {
   }
   return await con.query(sql);      
 }
-
-
 
 module.exports = { getAllnotes, read, editNote, deleteNote, getNote, create};
 

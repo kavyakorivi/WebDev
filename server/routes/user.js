@@ -1,11 +1,12 @@
 const express = require('express');
-const user = require('../models/user');
+const {getAllusers, login, register, editUser, deleteUser} = require('../models/user');
+//const user = require('../models/user');
 const router = express.Router();
 
 router
   .get('/', async (req, res) => {
     try {
-      const users = await user.getAllusers();
+      const users = await getAllusers();
       res.send(users);
     } catch(err) {
       res.status(401).send({message: err.message});
@@ -14,7 +15,8 @@ router
 
   .post('/login', async (req, res) => {
     try {
-      let user = await user.login(req.body);
+      let user = await login(req.body);
+       //console.log(req);
       res.send({...user, psw: undefined})
     } catch(err) {
       res.status(401).send({message: err.message});
@@ -23,7 +25,8 @@ router
 
   .post('/register', async (req, res) => {
     try {
-      let user = await user.register(req.body);
+      //console.log(req);
+      let user = await register(req.body);
       res.send({...user, psw: undefined})
     } catch(err) {
       res.status(401).send({message: err.message});
@@ -32,7 +35,7 @@ router
 
   .put('/edit', async (req, res) => {
     try {
-      let user = await user.editUser(req.body);
+      let user = await editUser(req.body);
       res.send({...user, psw: undefined});
     } catch(err) {
       res.status(401).send({message: err.message})
@@ -41,15 +44,11 @@ router
 
   .delete('/delete', async (req, res) => {
     try {
-      User.deleteUser(req.body);
+      deleteUser(req.body);
       res.send({success: "We'll Miss You... :("})
     } catch(err) {
       res.status(401).send({message: err.message})
     }
   })
-
-  
-
-
-  module.exports = router;
+ module.exports = router;
 

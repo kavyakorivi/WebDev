@@ -1,4 +1,4 @@
-import { fetchData } from './main.js'
+import { fetchData, getCurrentUser } from './main.js'
 
 // note class
 class Note {
@@ -10,9 +10,6 @@ class Note {
     return this.notecontent;
   }
 }
-
-
-
 
 let user=getCurrentUser();
 let noteForm = document.getElementById("note-form");

@@ -82,13 +82,4 @@ async function getUser(user) {
   return await con.query(sql);  
 }
 
-/*
-let cathy = {
-  userID: 5,
-  userName: "cathy123",
-  password: "icecream"
-}; 
-login(cathy);
-*/
-
 module.exports = { getAllusers, login, register, editUser, deleteUser};
