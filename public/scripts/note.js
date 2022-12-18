@@ -1,4 +1,4 @@
-import { fetchData, setCurrentUser } from './main.js'
+import { fetchData } from './main.js'
 
 // note class
 class Note {
@@ -40,7 +40,7 @@ function note(e) {
 
 
 
-if(user&&note) 
+if(user && note) 
     getsnotes();
 
 function getsnotes(){
